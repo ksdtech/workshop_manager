@@ -7,7 +7,10 @@ require 'json'
 class GcalService
   LOGIN_URL = 'https://www.google.com/accounts/ClientLogin'
   CREATE_EVENT_JSONC_URL = 'https://www.google.com/calendar/feeds/default/private/full?alt=jsonc'
-  APP_ID = 'ksd-workshopmanager-v1'
+  
+  def initialize(app_id)
+    @app_id = app_id
+  end
   
   def parse_body_form_encoded(body_str)
     body_str.split(/\r?\n/).inject({}) do |h, p|
@@ -26,7 +29,7 @@ class GcalService
   end
   
   def login_token(user_email, password)
-    login_data = "accountType=HOSTED&Email=#{user_email}&Passwd=#{password}&source=#{APP_ID}&service=cl"
+    login_data = "accountType=HOSTED&Email=#{user_email}&Passwd=#{password}&source=#{@app_id}&service=cl"
     c = Curl::Easy.new(LOGIN_URL)
     c.http_post(login_data)
     return nil unless c.response_code == 200

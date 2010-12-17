@@ -5,6 +5,7 @@ development: &default
     surname: ADMIN_USER_SURNAME
     password: ADMIN_USER_PASSWORD
   gcal:
+    app_id: 'COMPANY-APPNAME-VERSION'
     user_cn: 'Workshops'
     user_email: GCAL_USER_EMAIL
     password:  GCAL_USER_PASSWORD

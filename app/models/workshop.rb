@@ -82,7 +82,7 @@ class Workshop
     if found
       # add event to "workshops calendar"
       jsonc = proposal.create_event_jsonc(self.invitations)
-      new_event = GcalService.new.create_calendar_event(
+      new_event = GcalService.new(configatron.gcal.app_id).create_calendar_event(
         configatron.gcal.user_email, 
         configatron.gcal.password, 
         jsonc)
