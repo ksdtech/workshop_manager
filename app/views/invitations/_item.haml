@@ -1,0 +1,23 @@
+- vote = proposal.vote_for_invitation(item)
+%article{:class => 'vote'}
+  %header
+    %h1= item.name_or_email
+  %section
+    - if invitation.id == item.id
+      .group
+        My vote:
+        %input{:type => "radio", :name => "votes[#{vote.id}]", :id => "votes_#{vote.id}_yes", :value => Vote::YES, :checked => vote.checked?(Vote::YES)}
+        %label{:for => "votes_#{vote.id}_yes"} Yes
+        &nbsp;&nbsp;
+        %input{:type => "radio", :name => "votes[#{vote.id}]", :id => "votes_#{vote.id}_maybe", :value => Vote::MAYBE, :checked => vote.checked?(Vote::MAYBE)}
+        %label{:for => "votes_#{vote.id}_maybe"} Maybe
+        &nbsp;&nbsp;
+        %input{:type => "radio", :name => "votes[#{vote.id}]", :id => "votes_#{vote.id}_no", :value => Vote::NO, :checked => vote.checked?(Vote::NO)}
+        %label{:for => "votes_#{vote.id}_no"} No
+      .group
+        %label{:for => "comments_#{vote.id}"} My comment:
+        %br
+        %textarea{:cols => 60, :rows => 2, :name => "comments[#{vote.id}]", :id => "comments_#{vote.id}"}= vote.comment
+    - else
+      %p= "#{item.email}'s vote: #{vote.to_s} - #{vote.comment}"
+    = link_to("Review Votes for This Participant", url_for(:invitations, :votes, item.id))

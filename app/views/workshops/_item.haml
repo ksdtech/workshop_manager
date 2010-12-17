@@ -1,0 +1,12 @@
+%article
+  %header
+    %h1= item.title
+  %section
+    %p= item.description
+    %p= "Author: #{item.author_name} &lt;#{item.author_email}&gt;"
+    %p= "Invitees: #{item.invitee_emails.join(', ')}"
+    %p= "Status: #{item.status_s}"
+  %nav{:class => 'workshop'}
+    %ol
+      %li= link_to("Edit", url_for(:workshops, :edit, :id => item.id))
+      %li= link_to("Votes", url_for(:invitations, :votes, :id => item.default_invitation.id))

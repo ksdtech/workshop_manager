@@ -1,0 +1,19 @@
+/* trying to create a form layout without using tables */
+form ol {
+  padding:0;
+  margin:0;
+  list-style:none;
+}
+
+form ol li {
+  padding:0; 
+  clear:both; 
+  margin: 0 0 10px 0;
+}
+
+form label.left {
+  width: 250px; 
+  float:left; 
+  text-align:right; 
+  margin: 0 10px 0 0;
+}

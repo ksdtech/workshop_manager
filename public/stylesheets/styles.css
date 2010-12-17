@@ -1,0 +1,7 @@
+* {
+  font-family: Tahoma, sans-serif;
+}
+
+header, article.vote {
+  margin: 5px 0 5px 0;
+}

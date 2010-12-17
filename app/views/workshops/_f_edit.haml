@@ -1,0 +1,39 @@
+.group
+  %label{:for => "title"} Title
+  %input{:type => "text", :size => 60, :name => "title", :id => "title", :value => @workshop.title}
+.group
+  %label{:for => "description"} Description
+  %textarea{:cols => 60, :rows => 4, :name => "description", :id => "description"}= @workshop.description
+
+.group
+  %label{:for => "invitees"} Invitees
+  %textarea{:cols => 60, :rows => 4, :name => "invitees", :id => "invitees"}= @workshop.invitee_emails.join(', ')
+
+.group
+  %label{:for => "start_1_date"} Proposed Start Date and Time
+  %input{:type => "text", :name => "start_1_date", :id => "start_1_date", :value => @proposals[0][:date]}
+  %input{:type => "text", :name => "start_1_time", :id => "start_1_time", :value => @proposals[0][:time]}
+
+.group
+  %label{:for => "start_2_date"} Proposed Start Date and Time
+  %input{:type => "text", :name => "start_2_date", :id => "start_2_date", :value => @proposals[1][:date]}
+  %input{:type => "text", :name => "start_2_time", :id => "start_2_time", :value => @proposals[1][:time]}
+
+.group
+  %label{:for => "start_3_date"} Proposed Start Date and Time
+  %input{:type => "text", :name => "start_3_date", :id => "start_3_date", :value => @proposals[2][:date]}
+  %input{:type => "text", :name => "start_3_time", :id => "start_3_time", :value => @proposals[2][:time]}
+
+.group
+  %label{:for => "start_4_date"} Proposed Start Date and Time
+  %input{:type => "text", :name => "start_4_date", :id => "start_4_date", :value => @proposals[3][:date]}
+  %input{:type => "text", :name => "start_4_time", :id => "start_4_time", :value => @proposals[3][:time]}
+
+.group
+  %label{:for => "start_5_date"} Proposed Start Date and Time
+  %input{:type => "text", :name => "start_5_date", :id => "start_5_date", :value => @proposals[4][:date]}
+  %input{:type => "text", :name => "start_5_time", :id => "start_5_time", :value => @proposals[4][:time]}
+
+.group
+  %label{:for => "send_invitations"} Send Invitations?
+  %input{:type => "checkbox", :name => "send_invitations", :id => "send_invitations", :value => 1}

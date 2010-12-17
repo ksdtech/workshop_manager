@@ -1,0 +1,12 @@
+!!! 5
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %title= @title
+    =stylesheet_link_tag 'html5reset-1.6.1', 'styles', 'forms' 
+  %body
+    =yield
+    %nav{:class => 'primary'}
+      %ol
+        %li= link_to("Workshops", url_for(:workshops, :index))
+        %li= link_to("Create a new workshop", url_for(:workshops, :new))

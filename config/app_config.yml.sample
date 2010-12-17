@@ -1,0 +1,24 @@
+development: &default
+  admin_user: 
+    email: ADMIN_USER_EMAIL
+    name: ADMIN_USER_NAME
+    surname: ADMIN_USER_SURNAME
+    password: ADMIN_USER_PASSWORD
+  gcal:
+    user_cn: 'Workshops'
+    user_email: GCAL_USER_EMAIL
+    password:  GCAL_USER_PASSWORD
+  locations: [ SITE_1_NAME, SITE_2_NAME ]
+  mailer:
+    from: MAILER_FROM_EMAIL
+  smtp:
+    address: MAILER_SMTP_HOST
+    port: MAILER_SMTP_PORT
+    enable_starttls_auto: false
+  datamapper: mysql://USER:PASSWORD@localhost/workshops_development
+production:
+  <<: *default
+  datamapper: mysql://USER:PASSWORD@localhost/workshops_production
+test:
+  <<: *default
+  datamapper: sqlite://db/workshops_test.db

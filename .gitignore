@@ -1,0 +1,6 @@
+.bundle
+.components
+app_config.yml
+Gemfile.lock
+*.zip
+*.sqlite3

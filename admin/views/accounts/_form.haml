@@ -1,0 +1,36 @@
+.group
+  =f.label :full_name
+  =f.error_message_on :full_name
+  =f.text_field :name, :class => :text_field
+  %span.description Enter your full name
+
+.group
+  =f.label :email
+  =f.error_message_on :email
+  =f.text_field :email, :class => :text_field
+
+.group
+  =f.label :password
+  =f.error_message_on :password
+  =f.password_field :password, :class => :password_field
+
+.group
+  =f.label :password_confirmation
+  =f.error_message_on :password_confirmation
+  =f.password_field :password_confirmation, :class => :password_field
+
+.group
+  =f.label :location
+  =f.error_message_on :location
+  =f.select :location, :collection => Location.all, :fields => [:name, :id]
+  %span.description Enter preferred site
+
+.group
+  =f.label :role
+  =f.error_message_on :role
+  =f.select :role, :options => access_control.roles
+  %span.description Enter role
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:accounts, :index)}';return false", :class => :button
