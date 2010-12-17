@@ -1,0 +1,23 @@
+Workshop on Demand System
+-------------------------
+
+Loosely based on Doodle and Pleft web applications.
+Works with Google Apps for Education.
+
+1. Set up an account in your Google Apps organization. The personal 
+calendar for this account will hold the workshop events.
+
+2. Configure app_config.yml based on app_config.yml.sample file.
+
+3. Create database.
+
+4. Profit!
+
+To Do List
+----------
+
+Build a matrix for voting like Doodle has.
+
+Use GData API to create an initial Google Sites page in the workshop account
+that will hold information about the workshop.
+
