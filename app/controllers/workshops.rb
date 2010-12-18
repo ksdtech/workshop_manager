@@ -81,7 +81,13 @@ WorkshopManager.controllers :workshops do
         :free_busy => params[:votes][vote_id],
         :comment => params[:comments][vote_id])
     end
-    redirect url_for(:workshops, :votes, @workshop.id)
+    
+    finalized = false
+    if params[:finalize]
+      proposal = Proposal.get(params[:finalize]) rescue nil
+      finalized = @workshop.finalize!(proposal, true) if proposal
+    end
+    redirect finalized ? url_for(:workshops, :index) : url_for(:workshops, :votes, @workshop.id)
   end
   
 end

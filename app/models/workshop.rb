@@ -98,6 +98,7 @@ class Workshop
         end
       end
     end
+    found
   end
   
   def selected_proposal

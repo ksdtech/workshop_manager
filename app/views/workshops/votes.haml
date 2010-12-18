@@ -6,8 +6,7 @@
       %legend= "Review Voting for #{@workshop.title}"
       %table{:class => 'vote'}
         %tr
-          %td &nbsp;
-          %td{:colspan => @workshop.proposals.count} Times
+          %td{:colspan => @workshop.proposals.count+1} Votes
         %tr
           %td Participant
           - @workshop.proposals.each do |proposal|
@@ -36,8 +35,23 @@
               - else
                 %td{:class => vote.style_class}= vote.to_s
         %tr
-          %td Summary
+          %td
+            Total Votes
+            - @workshop.proposals.each do |proposal|
+              %td
+                = proposal.voting_summary_s
+        %tr
+          %td{:colspan => @workshop.proposals.count + 1} Selections
+        %tr
+          %td
+            %ul
+              %li
+                %input{:type => 'radio', :id => "not_finalized", :name => "finalize", :value => 0, :checked => 'checked'}
+                %label{:class => 'radio', :for => "not_finalized"} No Time Selected
           - @workshop.proposals.each do |proposal|
-            %td= proposal.voting_summary_s
+            %td
+              %ul
+                %li
+                  %input{:type => 'radio', :id => "finalize_#{proposal.id}", :name => "finalize", :value => proposal.id}
+                  %label{:class => 'radio', :for => "finalize_#{proposal.id}"} Select This Time
       %input{:type => 'submit', :name => 'submit', :value => 'Update'}  
-          

@@ -4,12 +4,6 @@ WorkshopManager.controllers :proposals do
   #   render 'index'
   # end
 
-  post :finalize, :with => :id do
-    proposal = Proposal.get(params[:id])
-    workshop = proposal.workshop.finalize!(proposal, true)
-    redirect url_for(:workshops, :index)
-  end
-
   # get :sample, :map => "/sample/url", :provides => [:any, :js] do
   #   case content_type
   #     when :js then ...
