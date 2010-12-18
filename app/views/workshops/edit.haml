@@ -10,12 +10,12 @@
       %ol
         - @workshop.invitations.each_with_index do |invitation, i|
           %li= "#{i+1}. #{invitation.name_or_email}: #{invitation.voting_summary_s}"
-      %p= link_to("Review Votes", url_for(:proposals, :votes, :id => @workshop.proposals.first.id))
+      %p= link_to("Review Votes", url_for(:workshops, :votes, :id => @workshop.id))
   %section
-    %header
-      %h1 Edit Workshop
-    %section 
-      %form{:id => 'workshop_edit', :action => url_for(:workshops, :update, :id => @workshop.id), :method => :post}
-        = partial 'workshops/f_edit'
-        .group
-          %input{:type => "submit", :name => "submit", :id => "submit", :value => 'Update'}
+    %form{:id => 'workshop_edit', :action => url_for(:workshops, :update, :id => @workshop.id), :method => :post}
+      %fieldset
+        %legend Edit Workshop
+        %ul
+          = partial 'workshops/f_edit'
+          %li
+            %input{:type => "submit", :name => "submit", :id => "submit", :value => 'Update'}

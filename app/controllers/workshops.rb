@@ -67,4 +67,21 @@ WorkshopManager.controllers :workshops do
     
     redirect url_for(:workshops, :index)
   end
+  
+  get :votes, :with => :id do
+    @workshop = Workshop.get(params[:id])
+    render 'workshops/votes'
+  end
+  
+  post :update_votes, :with => :id do
+    @workshop = Workshop.get(params[:id])
+    params[:votes].keys.each do |vote_id|
+      v = Vote.get(vote_id)
+      v.update(
+        :free_busy => params[:votes][vote_id],
+        :comment => params[:comments][vote_id])
+    end
+    redirect url_for(:workshops, :votes, @workshop.id)
+  end
+  
 end

@@ -1,0 +1,43 @@
+- @title = "Review Votes"
+
+%section
+  %form{:action => url_for(:workshops, :update_votes, @workshop.id), :method => :post}
+    %fieldset
+      %legend= "Review Voting for #{@workshop.title}"
+      %table{:class => 'vote'}
+        %tr
+          %td &nbsp;
+          %td{:colspan => @workshop.proposals.count} Times
+        %tr
+          %td Participant
+          - @workshop.proposals.each do |proposal|
+            %td= proposal.start_time_s
+        - @workshop.invitations.each do |invitation|
+          %tr
+            %td= invitation.name_or_email
+            - @workshop.proposals.each do |proposal|
+              - vote = proposal.vote_for_invitation(invitation)
+              - if invitation.account.id == current_account.id
+                %td{:class => vote.style_class}
+                  %ul
+                    %li
+                      %ul
+                        %li
+                          %input{:type => 'radio', :id => "vote_#{vote.id}_yes", :name => "votes[#{vote.id}]", :value => Vote::YES, :checked => vote.checked?(Vote::YES)}
+                          %label{:class => 'radio', :for => "vote_#{vote.id}_yes"} Yes
+                        %li
+                          %input{:type => 'radio', :id => "vote_#{vote.id}_maybe", :name => "votes[#{vote.id}]", :value => Vote::MAYBE, :checked => vote.checked?(Vote::MAYBE)}
+                          %label{:class => 'radio', :for => "vote_#{vote.id}_maybe"} Maybe
+                        %li
+                          %input{:type => 'radio', :id => "vote_#{vote.id}_no", :name => "votes[#{vote.id}]", :value => Vote::NO, :checked => vote.checked?(Vote::NO)}
+                          %label{:class => 'radio', :for => "vote_#{vote.id}_no"} No
+                    %li
+                      %textarea{:cols => 60, :rows => 2, :name => "comments[#{vote.id}]", :id => "comments_#{vote.id}"}= vote.comment
+              - else
+                %td{:class => vote.style_class}= vote.to_s
+        %tr
+          %td Summary
+          - @workshop.proposals.each do |proposal|
+            %td= proposal.voting_summary_s
+      %input{:type => 'submit', :name => 'submit', :value => 'Update'}  
+          

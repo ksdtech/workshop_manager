@@ -6,6 +6,7 @@ class Vote
   YES    = 1
   MAYBE  = 2
   NO     = 3
+  STYLE_CLASSES = [ nil, :vote_yes, :vote_maybe, :vote_no ].freeze
   VOTE_STRINGS = [ "Not yet voted", "Yes", "Maybe", "No" ].freeze
 
   # Properties
@@ -19,6 +20,10 @@ class Vote
   # Associations
   belongs_to :invitation
   belongs_to :proposal
+  
+  def style_class
+    STYLE_CLASSES[free_busy >= Vote::UNCAST && free_busy <= Vote::NO ? free_busy : Vote::UNCAST]
+  end
   
   def to_s
     VOTE_STRINGS[free_busy >= Vote::UNCAST && free_busy <= Vote::NO ? free_busy : Vote::UNCAST]

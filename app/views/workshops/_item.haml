@@ -9,4 +9,4 @@
   %nav{:class => 'workshop'}
     %ol
       %li= link_to("Edit", url_for(:workshops, :edit, :id => item.id))
-      %li= link_to("Votes", url_for(:invitations, :votes, :id => item.default_invitation.id))
+      %li= link_to("Votes", url_for(:workshops, :votes, :id => item.id))

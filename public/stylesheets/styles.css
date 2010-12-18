@@ -1,7 +1,22 @@
-* {
-  font-family: Tahoma, sans-serif;
+/* Add some margin to the page and set a default font */
+ 
+body {
+  margin: 30px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
-
+ 
 header, article.vote {
   margin: 5px 0 5px 0;
+}
+
+td.vote_yes {
+  background: #0f0;
+}
+
+td.vote_maybe {
+  background: #ff0;
+}
+
+td.vote_no {
+  background: #f00;
 }

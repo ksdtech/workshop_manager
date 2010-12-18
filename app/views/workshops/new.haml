@@ -1,11 +1,11 @@
 - @title = "Create a New Workshop"
 
 %section
-  %header
-    %h1= "Create a New Workshop at #{@location.name}"
-  %section
-    %form{:id => 'workshop_new', :action => url_for(:workshops, :create), :method => :post}
+  %form{:id => 'workshop_new', :action => url_for(:workshops, :create), :method => :post}
+    %fieldset
+      %legend= "Create a New Workshop at #{@location.name}"
       %input{:type => :hidden, :name => 'location', :value => @location.id}
+      %ul
         = partial 'workshops/f_new'
-        .group
+        %li
           %input{:type => 'submit', :name => 'submit', :id => 'submit', :value => 'Send Invitations'}

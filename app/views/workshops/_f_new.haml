@@ -1,42 +1,22 @@
-.group
-  %label{:for => "title"} Title
-  %input{:type => "text", :size => 60, :name => "title", :id => "title"}
-.group
-  %label{:for => "description"} Description
-  %textarea{:cols => 60, :rows => 4, :name => "description", :id => "description"}
-.group
-  %label{:for => "invitees"} Invitees
-  %textarea{:cols => 60, :rows => 4, :name => "invitees", :id => "invitees"}
-
-.group
-  %label{:for => "start_1_date"} Proposed Start Date and Time
-  %input{:type => "text", :name => "start_1_date", :id => "start_1_date"}
-  %input{:type => "text", :name => "start_1_time", :id => "start_1_time"}
-
-.group
-  %label{:for => "start_2_date"} Proposed Start Date and Time
-  %input{:type => "text", :name => "start_2_date", :id => "start_2_date"}
-  %input{:type => "text", :name => "start_2_time", :id => "start_2_time"}
-
-.group
-  %label{:for => "start_3_date"} Proposed Start Date and Time
-  %input{:type => "text", :name => "start_3_date", :id => "start_3_date"}
-  %input{:type => "text", :name => "start_3_time", :id => "start_3_time"}
-
-.group
-  %label{:for => "start_4_date"} Proposed Start Date and Time
-  %input{:type => "text", :name => "start_4_date", :id => "start_4_date"}
-  %input{:type => "text", :name => "start_4_time", :id => "start_4_time"}
-
-.group
-  %label{:for => "start_5_date"} Proposed Start Date and Time
-  %input{:type => "text", :name => "start_5_date", :id => "start_5_date"}
-  %input{:type => "text", :name => "start_5_time", :id => "start_5_time"}
-
-.group
-  %label{:for => "account_name"} Your Name
-  %input{:type => "text", :size => 60, :name => "account_name", :id => "account_name"}
-
-.group
-  %label{:for => "account_email"} Email Address
-  %input{:type => "text", :size => 60, :name => "account_email", :id => "account_email"}
+%li
+  %label{:for => 'title'} Title
+  %input{:type => 'text', :size => 60, :name => 'title', :id => 'title'}
+%li
+  %label{:for => 'description'} Description
+  %textarea{:cols => 60, :rows => 4, :name => 'description', :id => 'description'}
+%li
+  %label{:for => 'invitees'} Invitees (email addresses, comma-separated)
+  %textarea{:cols => 60, :rows => 4, :name => 'invitees', :id => 'invitees'}
+- 0.upto(4) do |i|
+  %li
+    %label{:for => "start_#{i+1}_date"} Proposed Start Date
+    %input{:type => 'date', :name => "start_#{i+1}_date", :id => "start_#{i+1}_date", :placeholder => '2011-01-20'}
+  %li
+    %label{:for => "start_#{i+1}_time"} And Time
+    %input{:type => 'time', :name => "start_#{i+1}_time", :id => "start_#{i+1}_time", :placeholder => '15:30'}
+%li
+  %label{:for => 'account_name'} Your Name
+  %input{:type => 'text', :size => 60, :name => 'account_name', :id => 'account_name'}
+%li
+  %label{:for => 'account_email'} Your Email Address
+  %input{:type => 'text', :size => 60, :name => 'account_email', :id => 'account_email'}
